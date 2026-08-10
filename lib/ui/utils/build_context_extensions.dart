@@ -10,3 +10,7 @@ extension BuildContextExtensions on BuildContext {
 
   TextTheme get textTheme => Theme.of(this).textTheme;
 }
+
+extension ThemeExtension on ThemeData {
+  Color get secondaryColor => colorScheme.secondary;
+}

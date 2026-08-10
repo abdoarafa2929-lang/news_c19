@@ -11,6 +11,11 @@ abstract final class AppTheme {
         secondary: AppColors.black,
         brightness: Brightness.light
       ),
+      iconTheme: IconThemeData(size: 24, color: AppColors.white),
+      dividerTheme: DividerThemeData(
+        color: AppColors.white,
+        thickness: 1,
+      ),
       appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -57,6 +62,11 @@ abstract final class AppTheme {
       scaffoldBackgroundColor: AppColors.black,
       brightness: Brightness.dark,
       primaryColor: Colors.black,
+      iconTheme: IconThemeData(size: 24, color: AppColors.white),
+      dividerTheme: DividerThemeData(
+        color: AppColors.white,
+        thickness: 1,
+      ),
       colorScheme: ColorScheme.light(
         primary: AppColors.black,
         secondary: AppColors.white,
