@@ -4,10 +4,12 @@ import 'package:news_c19/ui/utils/app_colors.dart';
 abstract final class AppTheme {
   static ThemeData lightTheme = ThemeData(
       scaffoldBackgroundColor: AppColors.white,
+      brightness: Brightness.light,
       primaryColor: Colors.white,
       colorScheme: ColorScheme.light(
         primary: AppColors.white,
         secondary: AppColors.black,
+        brightness: Brightness.light
       ),
       appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
@@ -53,10 +55,12 @@ abstract final class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
       scaffoldBackgroundColor: AppColors.black,
+      brightness: Brightness.dark,
       primaryColor: Colors.black,
       colorScheme: ColorScheme.light(
         primary: AppColors.black,
         secondary: AppColors.white,
+          brightness: Brightness.dark
       ),
       appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
