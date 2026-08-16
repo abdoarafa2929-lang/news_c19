@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_c19/ui/screens/news/news_screen.dart';
 import 'package:news_c19/ui/screens/splash/splash_screen.dart';
 import 'package:news_c19/ui/utils/app_theme.dart';
 
@@ -16,7 +17,21 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.dark,
-      home: SplashScreen(),
+      home: NewsScreen(),
     );
   }
 }
+
+
+
+/// Request:
+/// Type: GET - POST - PUT - DELETE - UPDATE...
+/// Link: BaseUrl/Api{PathVariables}?QueryParameters
+/// Body(Json - html - XML - )
+/// Headers(Json)
+///
+/// Response:
+/// Headers
+/// Body
+/// status code
+///
