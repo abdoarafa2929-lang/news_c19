@@ -20,6 +20,7 @@ abstract final class AppTheme {
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
+          iconTheme: IconThemeData(color: AppColors.black),
           titleTextStyle: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w500,
@@ -56,7 +57,10 @@ abstract final class AppTheme {
           displayMedium: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
-              color: AppColors.grey)));
+              color: AppColors.grey)),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: AppColors.black
+      ));
 
   static ThemeData darkTheme = ThemeData(
       scaffoldBackgroundColor: AppColors.black,
@@ -76,6 +80,7 @@ abstract final class AppTheme {
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
+          iconTheme: IconThemeData(color: AppColors.white),
           titleTextStyle: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w500,
@@ -112,5 +117,7 @@ abstract final class AppTheme {
           displayMedium: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
-              color: AppColors.grey)));
+              color: AppColors.grey)), progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.white
+  ));
 }

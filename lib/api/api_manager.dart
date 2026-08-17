@@ -8,10 +8,10 @@ abstract final class ApiManager {
   static const apiKey = "337dc2b5fe7c467aacde1b358cbe785b";
   static const defaultErrorMessage = "Something went wrong!";
 
-  static Future<List<SourceDM>> loadSources() async {
+  static Future<List<SourceDM>> loadSources(String category) async {
     try {
       Response serverResponse =
-          await dio.get("/v2/top-headlines/sources?apiKey=$apiKey");
+          await dio.get("/v2/top-headlines/sources?apiKey=$apiKey&category=$category");
       if (serverResponse.statusCode! >= 200 &&
           serverResponse.statusCode! < 300) {
         Map<String, dynamic> json = serverResponse.data;

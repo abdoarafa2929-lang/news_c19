@@ -12,6 +12,8 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   dio: ^5.11.0
+  cached_network_image: ^3.4.1
+  timeago: ^3.7.1
 
 dev_dependencies:
   flutter_test:

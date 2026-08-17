@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_c19/api/api_manager.dart';
 import 'package:news_c19/model/response/article_dm.dart';
 import 'package:news_c19/model/response/sources_response.dart';
 import 'package:news_c19/ui/utils/build_context_extensions.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class ArticleList extends StatelessWidget {
   final SourceDM sourceDM;
@@ -15,7 +17,10 @@ class ArticleList extends StatelessWidget {
         future: ApiManager.loadArticles(sourceDM.id!),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text(snapshot.error.toString(), style: TextStyle(color: Colors.red),);
+            return Text(
+              snapshot.error.toString(),
+              style: TextStyle(color: Colors.red),
+            );
           } else if (snapshot.hasData) {
             return buildArticlesList(snapshot.data!);
           } else {
@@ -25,35 +30,39 @@ class ArticleList extends StatelessWidget {
   }
 
   Widget buildArticlesList(List<ArticleDM> list) {
-    print(list);
-    return Container(
-      color: Colors.red,
-      child: ListView.builder(
-          itemCount: list.length,
-          itemBuilder: (context, index) =>
-              buildArticleItem(context, list[index])),
-    );
+    if (list.isEmpty) {
+      return Center(child: Text("No articles found in this source"));
+    }
+    return ListView.builder(
+        itemCount: list.length,
+        itemBuilder: (context, index) =>
+            buildArticleItem(context, list[index]));
   }
 
   Widget buildArticleItem(BuildContext context, ArticleDM article) {
     var theme = context.theme;
-
+    var dateTime = DateTime.parse(article.publishedAt!);
+    
     return Container(
-      height: 400,
+      padding: EdgeInsets.all(8),
+      margin: EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Colors.blue,
         border: Border.all(color: theme.secondaryColor, width: 1),
       ),
       child: Column(
         children: [
-          Image.network(article.urlToImage ??
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUsGS3PpKkgaBSZflZbwFkH62EfDp6L-CyCaD1rrhDBQ&s=10"),
+          CachedNetworkImage(
+            imageUrl: article.urlToImage ?? "",
+            height: context.height * .25,
+            placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
           Text(article.title ?? "Unknown"),
           Row(
             children: [
-              if (article.author != null) Text("By: ${article.author}"),
-              if (article.publishedAt != null) Text(article.publishedAt!)
+              if (article.author != null) Expanded(child: Text("By: ${article.author}", style: theme.textTheme.displayMedium)),
+              if (article.publishedAt != null) Text(timeago.format(dateTime), style: theme.textTheme.displayMedium,)
             ],
           )
         ],
