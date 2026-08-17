@@ -7,15 +7,24 @@ abstract final class AppTheme {
       brightness: Brightness.light,
       primaryColor: Colors.white,
       colorScheme: ColorScheme.light(
-        primary: AppColors.white,
-        secondary: AppColors.black,
-        brightness: Brightness.light
-      ),
+          primary: AppColors.white,
+          secondary: AppColors.black,
+          brightness: Brightness.light),
       iconTheme: IconThemeData(size: 24, color: AppColors.white),
       dividerTheme: DividerThemeData(
         color: AppColors.white,
         thickness: 1,
       ),
+      tabBarTheme: TabBarThemeData(
+          indicatorColor: AppColors.white,
+          labelStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: AppColors.black),
+          unselectedLabelStyle: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: AppColors.black)),
       appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -67,11 +76,20 @@ abstract final class AppTheme {
         color: AppColors.white,
         thickness: 1,
       ),
+      tabBarTheme: TabBarThemeData(
+          indicatorColor: AppColors.white,
+          labelStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: AppColors.white),
+          unselectedLabelStyle: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: AppColors.white)),
       colorScheme: ColorScheme.light(
-        primary: AppColors.black,
-        secondary: AppColors.white,
-          brightness: Brightness.dark
-      ),
+          primary: AppColors.black,
+          secondary: AppColors.white,
+          brightness: Brightness.dark),
       appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
