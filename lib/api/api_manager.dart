@@ -1,14 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:news_c19/model/articles_response.dart';
 import 'package:news_c19/model/sources_response.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 abstract final class ApiManager {
   static const _apiKey = "337dc2b5fe7c467aacde1b358cbe785b";
-  static final _dio = Dio(BaseOptions(baseUrl: "https://newsapi.org"));
+  static final _dio = Dio(BaseOptions(baseUrl: "https://newsapi.org",));
   static const _defaultErrorMessage =
       "Something went wrong please try again later";
 
   static Future<List<SourceDM>> loadSources(String category) async {
+    _dio.interceptors.add(PrettyDioLogger());
     try {
       var serverResponse =
           await _dio.get("/v2/top-headlines/sources?apiKey=$_apiKey&category=$category");
