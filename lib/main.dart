@@ -16,11 +16,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
-      home: NewsScreen(),
+      themeMode: ThemeMode.light,
+      home: SplashScreen(),
     );
   }
 }
+
+///News task list:
+///1- Implement search screen use everything api
+///2- Implement article details bottom sheet
+///3- Add Pagination for everything api
 
 
 

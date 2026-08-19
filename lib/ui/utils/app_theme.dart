@@ -11,6 +11,7 @@ abstract final class AppTheme {
           secondary: AppColors.black,
           brightness: Brightness.light),
       iconTheme: IconThemeData(size: 24, color: AppColors.white),
+      progressIndicatorTheme: ProgressIndicatorThemeData(color: AppColors.black),
       dividerTheme: DividerThemeData(
         color: AppColors.white,
         thickness: 1,
@@ -71,6 +72,7 @@ abstract final class AppTheme {
       scaffoldBackgroundColor: AppColors.black,
       brightness: Brightness.dark,
       primaryColor: Colors.black,
+      progressIndicatorTheme: ProgressIndicatorThemeData(color: AppColors.white),
       iconTheme: IconThemeData(size: 24, color: AppColors.white),
       dividerTheme: DividerThemeData(
         color: AppColors.white,
@@ -94,6 +96,9 @@ abstract final class AppTheme {
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
+          iconTheme: IconThemeData(
+            color: AppColors.white
+          ),
           titleTextStyle: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w500,

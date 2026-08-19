@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:news_c19/api/api_manager.dart';
+import 'package:news_c19/model/category_dm.dart';
 import 'package:news_c19/model/sources_response.dart';
 import 'package:news_c19/ui/screens/news/articles_list.dart';
 
-class NewsScreen extends StatelessWidget {
-  NewsScreen({super.key});
+import '../../widgets/app_drawer.dart';
 
+class NewsScreen extends StatelessWidget {
+  final CategoryDM categoryDM;
+  const NewsScreen(this.categoryDM, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("General"),
+          title: Text(categoryDM.name),
         ),
+        drawer: AppDrawer(showGoToHomeNavigation: true),
         body: FutureBuilder<List<SourceDM>>(
-            future: ApiManager.loadSources(),
+            future: ApiManager.loadSources(categoryDM.name),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return Text(

@@ -36,23 +36,29 @@ class AppDrawer extends StatelessWidget {
                 child: Column(
                   children: [
                     if (showGoToHomeNavigation) ...[
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.home,
-                            size: 24,
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            "Go to home",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: AppColors.white,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.home,
+                              size: 24,
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              "Go to home",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: AppColors.white,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 4,

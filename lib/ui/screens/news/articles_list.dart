@@ -20,7 +20,7 @@ class ArticlesList extends StatelessWidget {
             );
           } else if (snapshot.hasData) {
             var articles = snapshot.data!;
-            return buildArtilcesListView(articles);
+            return buildArticlesListView(articles);
           } else {
             return Center(
                 child: CircularProgressIndicator(
@@ -30,7 +30,12 @@ class ArticlesList extends StatelessWidget {
         });
   }
 
-  Widget buildArtilcesListView(List<ArticleDM> articles) {
+  Widget buildArticlesListView(List<ArticleDM> articles) {
+    if (articles.isEmpty) {
+      return Center(
+        child: Text("No articles found"),
+      );
+    }
     return ListView.builder(
         itemCount: articles.length,
         itemBuilder: (context, index) =>

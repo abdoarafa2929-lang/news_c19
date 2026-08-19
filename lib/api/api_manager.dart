@@ -8,10 +8,10 @@ abstract final class ApiManager {
   static const _defaultErrorMessage =
       "Something went wrong please try again later";
 
-  static Future<List<SourceDM>> loadSources() async {
+  static Future<List<SourceDM>> loadSources(String category) async {
     try {
       var serverResponse =
-          await _dio.get("/v2/top-headlines/sources?apiKey=$_apiKey");
+          await _dio.get("/v2/top-headlines/sources?apiKey=$_apiKey&category=$category");
       if (serverResponse.statusCode! >= 200 &&
           serverResponse.statusCode! < 300) {
         Map<String, dynamic> json = serverResponse.data;
