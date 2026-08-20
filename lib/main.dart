@@ -6,7 +6,7 @@ import 'package:news_c19/ui/utils/app_theme.dart';
 void main() {
   runApp(const MyApp());
 }
-
+///Bloc - Provider - GetX
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

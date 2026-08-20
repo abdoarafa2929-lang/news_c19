@@ -1,25 +1,28 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_c19/api/api_manager.dart';
 import 'package:news_c19/model/sources_response.dart';
 
-class NewsViewModel extends ChangeNotifier {
+class NewsState {
   List<SourceDM> sources = [];
   bool isLoading = false;
   var errorMessage = '';
 
+  NewsState(
+      {this.sources = const [],
+      this.isLoading = false,
+      this.errorMessage = ''});
+}
+
+class NewsViewModel extends Cubit<NewsState> {
+  NewsViewModel() : super(NewsState());
+
   loadSources(String category) async {
     try {
-      isLoading = true;
-      notifyListeners();
-      print("loading articles = $category");
-      sources = await ApiManager.loadSources(category);
-      print("sources = $sources");
-      isLoading = false;
-      notifyListeners();
+      emit(NewsState(isLoading: true));
+      var sources = await ApiManager.loadSources(category);
+      emit(NewsState(sources: sources));
     } catch (e) {
-      print("87- error = $e");
-      errorMessage = e.toString();
-      notifyListeners();
+      emit(NewsState(errorMessage: e.toString()));
     }
   }
 }
