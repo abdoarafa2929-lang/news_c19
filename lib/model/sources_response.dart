@@ -42,7 +42,7 @@ class SourceDM {
         this.language,
         this.country});
 
-  SourceDM.fromJson(Map<String, dynamic> json) {
+  SourceDM.fromJson(Map<dynamic, dynamic> json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];

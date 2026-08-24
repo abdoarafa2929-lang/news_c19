@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_c19/api/api_manager.dart';
+import 'package:news_c19/data/repository/news_repository/news_repository.dart';
 import 'package:news_c19/model/sources_response.dart';
 
 class NewsState {
@@ -14,12 +15,13 @@ class NewsState {
 }
 
 class NewsViewModel extends Cubit<NewsState> {
-  NewsViewModel() : super(NewsState());
+  NewsRepository newsRepository;
+  NewsViewModel({required this.newsRepository}) : super(NewsState());
 
   loadSources(String category) async {
     try {
       emit(NewsState(isLoading: true));
-      var sources = await ApiManager.loadSources(category);
+      var sources = await newsRepository.loadSources(category);
       emit(NewsState(sources: sources));
     } catch (e) {
       emit(NewsState(errorMessage: e.toString()));

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_c19/data/repository/news_repository/data_sources/local_data_source/news_local_data_source_impl.dart';
+import 'package:news_c19/data/repository/news_repository/data_sources/local_data_source/news_local_data_source_impl2.dart';
+import 'package:news_c19/data/repository/news_repository/data_sources/remote_data_source/news_remote_data_source_impl.dart';
+import 'package:news_c19/data/repository/news_repository/news_repository_impl.dart';
 import 'package:news_c19/model/category_dm.dart';
 import 'package:news_c19/model/sources_response.dart';
 import 'package:news_c19/ui/screens/news/articles_list.dart';
@@ -17,7 +21,11 @@ class NewsScreen extends StatefulWidget {
 }
 
 class _NewsScreenState extends State<NewsScreen> {
-  NewsViewModel viewModel = NewsViewModel();
+  NewsViewModel viewModel = NewsViewModel(
+    newsRepository: NewsRepositoryImpl(
+        newsRemoteDataSource: NewsRemoteDataSourceImpl(),
+        newsLocalDataSource: NewsLocalDataSourceImpl2())
+  );
 
   @override
   void initState() {
@@ -66,6 +74,7 @@ class _NewsScreenState extends State<NewsScreen> {
   }
 
   Widget buildTabBar(List<SourceDM> sources) {
+    if(sources.isEmpty) return Center(child: Text("No sources in this category"),);
     // var nums = [1, 2 ,3];
     // nums.map((num) => num.toString()).toList()
 
