@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_c19/ui/utils/app_colors.dart';
-import 'package:news_c19/ui/utils/build_context_extensions.dart';
 
 class AppDrawer extends StatelessWidget {
   final bool showGoToHomeNavigation;
@@ -9,7 +8,6 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = context.theme;
     return Drawer(
       backgroundColor: Colors.white,
       child: Column(

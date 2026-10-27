@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_c19/ui/screens/news/news_screen.dart';
 import 'package:news_c19/ui/screens/splash/splash_screen.dart';
 import 'package:news_c19/ui/utils/app_theme.dart';
 
